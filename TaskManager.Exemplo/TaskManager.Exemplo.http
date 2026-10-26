@@ -1,0 +1,41 @@
+### Requisições de exemplo. No Visual Studio, clique em "Send request" acima de cada uma.
+### (Alternativa ao Swagger: http://localhost:5192/swagger)
+
+@host = http://localhost:5192
+
+### Listar todas → 200
+GET {{host}}/api/tarefas
+
+### Criar → 201
+POST {{host}}/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Estudar EF Core"
+}
+
+### Criar com título inválido → 400
+POST {{host}}/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": ""
+}
+
+### Buscar por id → 200
+GET {{host}}/api/tarefas/1
+
+### Buscar id que não existe → 404
+GET {{host}}/api/tarefas/999
+
+### Atualizar → 204
+PUT {{host}}/api/tarefas/1
+Content-Type: application/json
+
+{
+  "titulo": "Estudar EF Core e LINQ",
+  "concluida": true
+}
+
+### Remover → 204
+DELETE {{host}}/api/tarefas/1
